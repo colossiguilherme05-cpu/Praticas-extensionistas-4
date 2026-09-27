@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacientes</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+
+<h2>Pacientes</h2>
+
+<a href="{% url 'criar_paciente' %}">➕ Novo Paciente</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Nome</th>
+    <th>CPF</th>
+    <th>Telefone</th>
+    <th>E-mail</th>
+    <th>Ações</th>
+</tr>
+
+{% for paciente in pacientes %}
+
+<tr>
+    <td>{{ paciente.nome_pac }}</td>
+    <td>{{ paciente.cpf }}</td>
+    <td>{{ paciente.numtelefone }}</td>
+    <td>{{ paciente.email }}</td>
+
+    <td>
+        <a href="{% url 'editar_paciente' paciente.id %}">✏️ Editar</a> |
+        <a href="{% url 'excluir_paciente' paciente.id %}">🗑️ Excluir</a>
+    </td>
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="5">Nenhum paciente cadastrado.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'cadastros' %}">← Voltar</a>
+
+</div>
+
+</body>
+</html>

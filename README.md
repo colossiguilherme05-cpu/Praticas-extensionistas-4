@@ -1,1 +1,5 @@
 # Praticas-extensionistas-4
+
+O presente trabalho tem como objetivo a modelagem de um sistema de informação voltado ao agendamento de consultas públicas e à solicitação de medicamentos, considerando as necessidades de organização, eficiência e controle no atendimento à população. A proposta baseia-se na importância da informatização dos processos de saúde pública, visando reduzir filas, melhorar o gerenciamento de recursos e proporcionar maior acessibilidade aos serviços. 
+
+Nesse contexto, o sistema foi concebido para permitir que pacientes realizem o agendamento de consultas, acompanhem seus atendimentos e efetuem solicitações de medicamentos, enquanto profissionais de saúde e gestores atuam na execução e administração dos serviços. A modelagem contempla as principais entidades envolvidas, bem como suas relações e regras de negócio, refletindo o funcionamento real do domínio. 

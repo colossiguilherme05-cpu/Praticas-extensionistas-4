@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unidades de Saúde</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+
+<h2>Unidades de Saúde</h2>
+
+<a href="{% url 'criar_unidade' %}">➕ Nova Unidade</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Nome</th>
+    <th>Endereço</th>
+    <th>Ações</th>
+</tr>
+
+{% for unidade in unidades %}
+
+<tr>
+    <td>{{ unidade.nome_uni }}</td>
+    <td>{{ unidade.endereco_uni }}</td>
+
+    <td>
+        <a href="{% url 'editar_unidade' unidade.id %}">✏️ Editar</a> |
+        <a href="{% url 'excluir_unidade' unidade.id %}">🗑️ Excluir</a>
+    </td>
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="3">Nenhuma unidade cadastrada.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'cadastros' %}">← Voltar</a>
+
+</div>
+
+</body>
+</html>

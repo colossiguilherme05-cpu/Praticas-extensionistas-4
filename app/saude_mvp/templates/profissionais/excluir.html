@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Profissional</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Excluir Profissional</h2>
+
+    <p>Tem certeza que deseja excluir este profissional?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Excluir</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'listar_profissionais' %}">Cancelar</a>
+
+</div>
+
+</body>
+</html>

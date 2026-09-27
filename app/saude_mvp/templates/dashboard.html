@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Sistema de Saúde</h2>
+
+    <p>Bem-vindo ao sistema de agendamento</p>
+
+    <hr>
+
+    <a href="/consultas/" class="btn-link">📋 Consultas</a>
+    <a href="/consultas/nova/" class="btn-link">➕ Nova Consulta</a>
+    <a href="/consultas/relatorio/" class="btn-link">📊 Relatório de Consultas</a>
+    <a href="/solicitacoes/" class="btn-link">💊 Medicamentos</a>
+    <a href="/contato/" class="btn-link">📩 Contato</a>
+    <a href="/cadastros/" class="btn-link">📁 Cadastros</a>
+
+    <hr>
+
+    <a href="/logout/" class="btn-voltar">🚪 Sair</a>
+
+</div>
+
+</body>
+</html>

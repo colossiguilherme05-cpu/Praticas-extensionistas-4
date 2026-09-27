@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Contato</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Contato com os Desenvolvedores</h2>
+
+    <p>
+        Caso tenha dúvidas, sugestões ou encontre algum problema no sistema,
+        envie uma mensagem para nossa equipe.
+    </p>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: green;"><strong>{{ message }}</strong></p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+
+        <label>E-mail</label>
+        <input type="email" name="email" required>
+
+        <label>Mensagem</label>
+        <textarea name="mensagem" rows="6" required></textarea>
+
+        <br><br>
+
+        <button type="submit">Enviar Mensagem</button>
+        <a href="{% url 'dashboard' %}" class="btn-voltar">Voltar</a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultas Agendadas</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width: 90%; max-width: 1100px;">
+
+    <h2>Consultas Agendadas</h2>
+
+    <div style="margin-bottom:20px;">
+        <a href="{% url 'criar_consulta' %}">➕ Nova Consulta</a>
+        <a href="{% url 'dashboard' %}" style="margin-left:10px;">🏠 Dashboard</a>
+    </div>
+
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse;">
+
+        <thead style="background-color:#1e88e5; color:white;">
+            <tr>
+                <th>Paciente</th>
+                <th>Profissional</th>
+                <th>Unidade</th>
+                <th>Data</th>
+                <th>Hora</th>
+                <th>Status</th>
+                <th style="width:180px;">Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for consulta in consultas %}
+
+            <tr>
+                <td>{{ consulta.id_pac }}</td>
+                <td>{{ consulta.id_prof }}</td>
+                <td>{{ consulta.id_uni }}</td>
+                <td>{{ consulta.data_con|date:"d/m/Y" }}</td>
+                <td>{{ consulta.hora_con }}</td>
+                <td>{{ consulta.status_con }}</td>
+
+                <td>
+
+                    <a href="{% url 'editar_consulta' consulta.id %}">
+                        ✏️ Editar
+                    </a>
+
+                    |
+
+                    <a href="{% url 'deletar_consulta' consulta.id %}">
+                        🗑️ Excluir
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="7" style="text-align:center;">
+                    Nenhuma consulta cadastrada.
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>

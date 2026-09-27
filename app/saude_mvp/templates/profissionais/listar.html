@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Profissionais</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+
+<h2>Profissionais de Saúde</h2>
+
+<a href="{% url 'criar_profissional' %}">➕ Novo Profissional</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Nome</th>
+    <th>CRM</th>
+    <th>Especialidade</th>
+    <th>Ações</th>
+</tr>
+
+{% for profissional in profissionais %}
+
+<tr>
+    <td>{{ profissional.nome_prof }}</td>
+    <td>{{ profissional.crm_prof }}</td>
+    <td>{{ profissional.id_esp }}</td>
+
+    <td>
+        <a href="{% url 'editar_profissional' profissional.id %}">✏️ Editar</a> |
+        <a href="{% url 'excluir_profissional' profissional.id %}">🗑️ Excluir</a>
+    </td>
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="4">Nenhum profissional cadastrado.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'cadastros' %}">← Voltar</a>
+
+</div>
+
+</body>
+</html>

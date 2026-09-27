@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medicamentos</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+
+<h2>Medicamentos</h2>
+
+<a href="{% url 'criar_medicamento' %}">➕ Novo Medicamento</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Medicamento</th>
+    <th>Ações</th>
+</tr>
+
+{% for medicamento in medicamentos %}
+
+<tr>
+    <td>{{ medicamento.nome_med }}</td>
+
+    <td>
+        <a href="{% url 'editar_medicamento' medicamento.id %}">✏️ Editar</a> |
+        <a href="{% url 'excluir_medicamento' medicamento.id %}">🗑️ Excluir</a>
+    </td>
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="2">Nenhum medicamento cadastrado.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'cadastros' %}">← Voltar</a>
+
+</div>
+
+</body>
+</html>

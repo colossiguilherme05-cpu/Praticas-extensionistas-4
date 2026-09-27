@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nova Solicitação</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Criar Solicitação de Medicamento</h2>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Salvar</button>
+</form>
+
+<br>
+<a href="{% url 'listar_solicitacoes_med' %}">Voltar</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Itens da Solicitação</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="mensagem {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container">
+
+<h2>Medicamentos da Solicitação</h2>
+
+<h4>Paciente: {{ solicitacao.id_pac.nome_pac }}</h4>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar Medicamento</button>
+</form>
+
+<hr>
+
+<table border="1">
+
+<tr>
+    <th>Medicamento</th>
+    <th>Quantidade</th>
+</tr>
+
+{% for i in itens %}
+
+<tr>
+    <td>{{ i.id_med.nome_med }}</td>
+    <td>{{ i.quant_itemsolic }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+<a href="{% url 'listar_solicitacoes_med' %}">Voltar</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solicitações de Medicamentos</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Solicitações de Medicamentos</h2>
+
+<a href="{% url 'criar_solicitacao_med' %}">➕ Nova Solicitação</a>
+
+<table border="1">
+
+<tr>
+    <th>Paciente</th>
+    <th>Data</th>
+    <th>Status</th>
+    <th>Ações</th>
+</tr>
+
+{% for s in solicitacoes %}
+
+<tr>
+    <td>{{ s.id_pac.nome_pac }}</td>
+    <td>{{ s.data_solic }}</td>
+    <td>{{ s.status_solic }}</td>
+
+    <td>
+        <a href="{% url 'adicionar_itens' s.id %}">Medicamentos</a> |
+        <a href="{% url 'editar_solicitacao_med' s.id %}">Editar</a> |
+        <a href="{% url 'excluir_solicitacao_med' s.id %}">Excluir</a>
+    </td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+<a href="{% url 'dashboard' %}">Voltar</a>
+
+</div>
+
+</body>
+</html>

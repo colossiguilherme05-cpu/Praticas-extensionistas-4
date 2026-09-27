@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Solicitação</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Excluir Solicitação</h2>
+
+<p>Tem certeza que deseja excluir a solicitação do paciente:</p>
+
+<strong>{{ solicitacao.id_pac.nome_pac }}</strong>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Sim, excluir</button>
+</form>
+
+<br>
+<a href="{% url 'listar_solicitacoes_med' %}">Cancelar</a>
+
+</div>
+
+</body>
+</html>

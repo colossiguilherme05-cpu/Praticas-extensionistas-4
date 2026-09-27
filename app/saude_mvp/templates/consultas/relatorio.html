@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Relatório de Consultas</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<form method="GET">
+
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+
+    <select name="paciente" style="width:180px;">
+        <option value="">Paciente</option>
+        {% for p in pacientes %}
+            <option value="{{ p.id }}">{{ p.nome_pac }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="profissional" style="width:180px;">
+        <option value="">Profissional</option>
+        {% for prof in profissionais %}
+            <option value="{{ prof.id }}">{{ prof.nome_prof }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="unidade" style="width:180px;">
+        <option value="">Unidade</option>
+        {% for u in unidades %}
+            <option value="{{ u.id }}">{{ u.nome_uni }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="status" style="width:150px;">
+        <option value="TODOS">Status</option>
+        <option value="AGENDADA">Agendada</option>
+        <option value="REALIZADA">Realizada</option>
+        <option value="CANCELADA">Cancelada</option>
+    </select>
+
+    <input type="date" name="data" style="width:150px;">
+    <input type="time" name="hora" style="width:130px;">
+
+    <button type="submit">Filtrar</button>
+
+</div>
+
+</form>
+
+<div class="container" style="width:90%;">
+
+<h2>Relatório de Consultas</h2>
+
+<p><strong>Total de consultas:</strong> {{ total }}</p>
+
+<p><strong>Agendadas:</strong> {{ agendadas }}</p>
+
+<p><strong>Realizadas:</strong> {{ realizadas }}</p>
+
+<p><strong>Canceladas:</strong> {{ canceladas }}</p>
+
+<hr>
+
+<table>
+
+    <tr>
+        <th>Paciente</th>
+        <th>Profissional</th>
+        <th>Unidade</th>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Status</th>
+    </tr>
+
+    {% for consulta in consultas %}
+
+    <tr>
+        <td>{{ consulta.id_pac.nome_pac }}</td>
+        <td>{{ consulta.id_prof.nome_prof }}</td>
+        <td>{{ consulta.id_uni.nome_uni }}</td>
+        <td>{{ consulta.data_con|date:"d/m/Y" }}</td>
+        <td>{{ consulta.hora_con }}</td>
+        <td>{{ consulta.status_con }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'dashboard' %}">Voltar ao Dashboard</a>
+
+</div>
+
+</body>
+</html>

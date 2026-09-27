@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Especialidades</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+
+<h2>Especialidades Médicas</h2>
+
+<a href="{% url 'criar_especialidade' %}">➕ Nova Especialidade</a>
+
+<br><br>
+
+<table>
+
+<tr>
+    <th>Especialidade</th>
+    <th>Ações</th>
+</tr>
+
+{% for especialidade in especialidades %}
+
+<tr>
+    <td>{{ especialidade.nome_esp }}</td>
+
+    <td>
+        <a href="{% url 'editar_especialidade' especialidade.id %}">✏️ Editar</a> |
+        <a href="{% url 'excluir_especialidade' especialidade.id %}">🗑️ Excluir</a>
+    </td>
+</tr>
+
+{% empty %}
+
+<tr>
+    <td colspan="2">Nenhuma especialidade cadastrada.</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="{% url 'cadastros' %}">← Voltar</a>
+
+</div>
+
+</body>
+</html>
